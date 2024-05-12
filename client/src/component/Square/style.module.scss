@@ -1,0 +1,14 @@
+@import '../../vars';
+
+
+.container {
+    @extend .flex-center;
+    background-color: $board-color ;
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    border: solid black 3px;
+    box-shadow: -1px 1px 0 0 black;
+
+
+}

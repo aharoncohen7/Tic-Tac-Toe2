@@ -1,0 +1,36 @@
+@import '../../vars';
+
+.container {
+    height: 100vh;
+    padding: 10px;
+    flex-direction: column;
+    gap: 45px;
+    @extend .flex-center;
+    justify-content: start;
+    padding-top: 200px;
+    flex-wrap: nowrap;
+}
+
+.back {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+
+.text {
+    @extend .txt;
+}
+.square {
+    width: 140px;
+    height: 140px;
+}
+
+.btn {
+    width: 250px;
+    height: 100px;
+    
+    & .text {
+        -webkit-text-stroke: 3px $color-gold-dark;
+    }
+}

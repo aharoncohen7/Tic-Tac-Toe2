@@ -1,0 +1,42 @@
+@import '../../vars';
+
+.container{
+    @extend .flex-center;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 50px;
+    
+}
+
+.back {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+.text{
+@extend .txt;
+font-size: 25pt;
+}
+.border{
+    @extend .flex-center;
+    flex-direction: column;
+    & .text{
+        font-size: 25px;
+        z-index: 2;
+        text-align: center;
+        margin-bottom: -15px
+    }
+}
+.code{
+    @extend .flex-center;
+    width: 400px;
+    height: 130px;
+    background-color: #ffff ;
+    -webkit-text-stroke: 2px black;
+    border-radius: 20px;
+    border: solid black 3px;
+    box-shadow: -5px 5px 0 0 black;
+    font-size: 50px;
+    color: #CDCDCD;
+    letter-spacing: 15px;
+}

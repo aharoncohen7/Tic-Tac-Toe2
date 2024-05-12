@@ -1,0 +1,70 @@
+@import '../../vars';
+
+.container{
+    @extend .flex-center;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 60px;
+}
+
+.back {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.text {
+    color: #ffff;
+    -webkit-text-stroke: 3px black;
+    font-size: 50px;
+    font-weight: 300;
+    text-align: left;
+
+}
+
+.input {
+    text-align: center;
+    width: 350px;
+    height: 70px;
+    background-color: #ffff;
+    border: black solid 7px;
+    box-shadow: -5px 5px 0 0 black;
+    border-radius: 20px;
+    font-size: 20px;
+    // & ::placeholder{
+    //     font-size: 35px;
+    //     background-color: aqua;
+    //     color: red;
+    // }
+}
+
+.join {
+    width: 160px;
+    height: 70px;
+
+    & .text {
+        font-size: 30px;
+        font-weight: 500;
+        -webkit-text-stroke: 3px $color-gold-dark;
+    }
+}
+
+.or_container{
+    @extend .flex-center;
+    gap: 20px;
+
+
+
+}
+
+.line{
+    width: 100px;
+    border: 3px solid rgb(173, 204, 236);
+}
+
+.create_game {
+    width: 260px;
+    height: 90px;
+@extend .join;   
+    
+}

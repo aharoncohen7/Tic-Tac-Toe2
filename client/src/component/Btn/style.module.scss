@@ -1,0 +1,10 @@
+@import '../../vars';
+
+.btn{
+@extend .flex-center;
+background-color: $color-gold;
+border-radius: 40px;
+border-bottom: 10px solid $color-gold-dark; 
+width: 100%;
+height: 100%;
+}

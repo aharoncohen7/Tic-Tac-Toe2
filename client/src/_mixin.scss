@@ -1,0 +1,11 @@
+@import './vars';
+
+@mixin alert($mainColor: red) {
+   border: 1px solid $mainColor;
+   background-color: rgba($color: $mainColor, $alpha: 0.5);
+   color: $mainColor;
+
+   &:hover {
+      background-color: rgba($color: $mainColor, $alpha: 0.3);
+   }
+}

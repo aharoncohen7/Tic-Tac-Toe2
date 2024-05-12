@@ -1,0 +1,27 @@
+.loader {
+    width: 145px;
+    height: 145px;
+    border: 20px dotted rgba($color: #FCD015, $alpha: 0);
+    border-top-color: #FCD015;
+    border-right-color: #FCD015;
+    border-radius: 50%;
+  
+    //  animation settings
+    animation-name: rotate;
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+  }
+  
+  @keyframes rotate {
+    0% {
+      rotate: 0deg;
+      // background-color: red;
+      // scale: 0.5;
+    }
+    
+    100% {
+      rotate: 360deg;
+      // background-color: green;
+    }
+  }

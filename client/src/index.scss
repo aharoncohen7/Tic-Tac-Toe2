@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kumbh+Sans:wght@100..900&family=Luckiest+Guy&family=Martian+Mono&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Luckiest Guy", cursive;
+}
+body{
+  background-color:#3d7ad6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+a,input,select, button{
+  font: inherit;
+  border: none;
+  background-color: inherit;
+  outline: none;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+:root{
+  --color-gold:#FCD015;
+  --color-gold-dark:#FBB500;
+  --primary-color:#00A389;
+  --gray-bg-color:#F4F6F8;
+  --header-padding:10px;
+  --header-height:80px;
+
+
+}
+::-webkit-scrollbar{
+  width: 0px;
+  // background-color: var(--text-color);
+}
+// ::-webkit-scrollbar-thumb{
+//   background-color: var(--primary-color);
+// }
+
+
+
+
+
+
+
