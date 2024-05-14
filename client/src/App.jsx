@@ -46,7 +46,7 @@ const router = createBrowserRouter([
 
 
 function App() {
-  const [player, setPlayer] = useState({play:null, status: null});
+  const [player, setPlayer] = useState({symbol:null, status: null});
 
   useEffect(()=>{
     return ()=> socket.disconnect() }, [])

@@ -15,42 +15,47 @@ export const JoinGame = () => {
   const [input, setInput] = useState('');
 
   // יוצר
+  // יצירה והמתנה ליריב
   const handleCreateGame = () => {
     socket.emit('create-room', player);
-    socket.on('create-room', (creator) => {
-      // console.log(creator);
-      // console.log(creator.id , socket.id);
-      if(creator.id !== socket.id){
-        alert("There is a mismatch between the data")
-        return
-      }
-      console.log(creator);
-      setPlayer(creator)
-      // setPlayer({ playerId: socket.id, status: "creator", roomNum })
-      navigate('/waiting', { state: { number: creator.roomNum } })
-    })
   }
 
   //  מצטרף
   const handleJoin = () => {
     socket.emit('join-room',  { ...player, roomNum: input });
-    socket.on('join-room', (joiner) => {
-      // שינוי
-      if (joiner.id) {
-        if(joiner.id !== socket.id){
-          alert("There is a mismatch between the data")
-          return
-        }
-        console.log(joiner);
-        setPlayer(joiner);
-        navigate('/chooseplayer',
-        //  { state: { solo: false, roomNum: input, creator: false } }
-        );
-      } else {
-        alert('Room not found');
-      }
-    });
   };
+
+   // יוצר
+  socket.on('the-room-is-created', (creator) => {
+    // console.log(creator);
+    // console.log(creator.id , socket.id);
+    if(creator.id !== socket.id){
+      alert("There is a mismatch between the data")
+      return
+    }
+    console.log(creator);
+    setPlayer(creator)
+    // setPlayer({ playerId: socket.id, status: "creator", roomNum })
+    navigate('/waiting', { state: { number: creator.roomNum } })
+  })
+
+
+    //  מצטרף
+  socket.on('welcome', (joiner) => {
+    if (joiner.id) {
+      if(joiner.id !== socket.id){
+        alert("There is a mismatch between the data")
+        return
+      }
+      console.log(joiner);
+      setPlayer(joiner);
+      navigate('/chooseplayer',
+      //  { state: { solo: false, roomNum: input, creator: false } }
+      );
+    } else {
+      alert('Room not found');
+    }
+  });
 
 
 

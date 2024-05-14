@@ -11,7 +11,7 @@ export const PlayBoardSolo = ({ }) => {
     const { player, setPlayer } = useContext(PlayerContext)
     const navigate = useNavigate();
     // שינוי
-    const [currentPlayer, setCurrentPlayer] = useState(player?.play ? player.play : 'X');
+    const [currentPlayer, setCurrentPlayer] = useState(player?.symbol ? player.symbol : 'X');
     console.log(currentPlayer);
     const [steps, setSteps] = useState(0);
     const [winner, setWinner] = useState(null);
@@ -19,7 +19,7 @@ export const PlayBoardSolo = ({ }) => {
     const [board, setBoard] = useState([]);
 
 
-    const craeteBoard = (e) => {
+    const createBoard = (e) => {
         const s = Number(e.target.value)
         setSize(s);
         setBoard(Array(s * s).fill(null));
@@ -59,9 +59,9 @@ export const PlayBoardSolo = ({ }) => {
             <div className={styles.container}>
                 <span className={styles.buttons}>
                     {winner && <div onClick={restartGame} className={styles.popup}>  THE WINNER IS <img src={`../../../assets/${winner}.svg`} width={'50px'} /> </div>}
-                    <button value='3' className={styles.text} onClick={craeteBoard} >3</button>
-                    <button value='4' className={styles.text} onClick={craeteBoard} >4</button>
-                    <button value='5' className={styles.text} onClick={craeteBoard} >5</button></span>
+                    <button value='3' className={styles.text} onClick={createBoard} >3</button>
+                    <button value='4' className={styles.text} onClick={createBoard} >4</button>
+                    <button value='5' className={styles.text} onClick={createBoard} >5</button></span>
                 <div className={styles.board} style={{ gridTemplateColumns: `repeat( ${boardSize} , 1fr)` }} >
                     {boardSize ? [...Array(boardSize * boardSize)].map((_, index) => (
                         <button key={index} className={styles.square} onClick={() => play(index)} >

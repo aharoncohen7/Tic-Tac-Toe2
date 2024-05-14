@@ -10,10 +10,12 @@ export const Waiting = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  socket.on("join-room", (isJoined) => {
-    if (isJoined) {
-      navigate('/chooseplayer', { state: { solo: false, creator: true, roomNum: isJoined } })
-    }
+  socket.on('match', (isJoined) => {
+    // if (isJoined) {
+      navigate('/chooseplayer',
+      //  { state: { solo: false, creator: true, roomNum: isJoined } }
+      )
+    // }
   })
 
   return (

@@ -43,6 +43,14 @@
     padding: 3px;
 }
 
+.sizeButtons{
+
+    @extend .flex-center;
+    gap: 20px;
+
+
+}
+
 .text {
     color: #ffff;
     -webkit-text-stroke: 3px $color-gold-dark;
