@@ -22,13 +22,13 @@ export const JoinGame = () => {
 
   //  מצטרף
   const handleJoin = () => {
-    socket.emit('join-room',  { ...player, roomNum: input });
+    socket.emit('join-room',  player, input );
   };
 
    // יוצר
-  socket.on('the-room-is-created', (creator) => {
-    // console.log(creator);
-    // console.log(creator.id , socket.id);
+  socket.on('the-room-is-created', (creator, roomNumber) => {
+    console.log(creator);
+    console.log(creator.id , socket.id);
     if(creator.id !== socket.id){
       alert("There is a mismatch between the data")
       return
@@ -36,7 +36,7 @@ export const JoinGame = () => {
     console.log(creator);
     setPlayer(creator)
     // setPlayer({ playerId: socket.id, status: "creator", roomNum })
-    navigate('/waiting', { state: { number: creator.roomNum } })
+    navigate('/waiting', { state: { number: roomNumber } })
   })
 
 

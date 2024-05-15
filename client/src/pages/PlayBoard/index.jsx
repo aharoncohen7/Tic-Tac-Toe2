@@ -36,6 +36,8 @@ export const PlayBoard = ({ }) => {
         setCurrentPlayer(firstPlayer)
     })
 
+    socket.on('update-user', user=>{setPlayer(user);console.log(user); })
+
 
     //אצל שני השחקנים
     // כאשר פרטי התור הקודם נשמרו ועובדו בצד השרת והתור עבור ליריב
@@ -56,6 +58,7 @@ export const PlayBoard = ({ }) => {
         setBoardSize(0)
         setWinner(null);
         setBoard([]);
+        setIsGameOver(false);
     })
 
 
@@ -64,39 +67,15 @@ export const PlayBoard = ({ }) => {
         setIsGameOver(true);
     });
 
-    socket.on('game-over-with-winner', (winner) => {
-        console.log("the winner of the game is: " + winner.symbol);
-        setWinner(winner);
+    socket.on('game-over-with-winner', (winnerSymbol) => {
+        console.log("the winner of the game is: " + winnerSymbol);
+        setWinner(winnerSymbol);
     });
-
-
-
-    // const play2 = (i) => {
-    //     if (!board[i]) {
-    //         let newBoard = [...board];
-    //         newBoard[i] = currentPlayer;
-    //         setBoard(newBoard);
-    //         setSteps(steps + 1);
-    //         if (steps + 1 >= (boardSize * 2) - 1) {
-    //             const isWin = checkBoard(newBoard, i, boardSize, currentPlayer)
-    //             isWin && (setWinner(currentPlayer));
-    //         }
-    //         setCurrentPlayer(prevPlayer => {
-    //             if (prevPlayer == "X") {
-    //                 return "O";
-    //             }
-    //             else {
-    //                 return "X";
-    //             }
-    //         });
-    //     };
-    // }
-
 
 
     const play = (pos) => {
         // בודק אם התור של התור שייך למפעיל הפונקציה
-        if (player.symbol == currentPlayer) {
+        if (currentPlayer==player.symbol && board[pos]==null) {
             // if (!board[i]) {
             // העתקת מצב הלוח אצל השחקן 
             // let newBoard = [...board];
@@ -111,10 +90,6 @@ export const PlayBoard = ({ }) => {
 
     const restartGame = () => {
         socket.emit('restart-game')
-        // setBoard([]);
-        // setWinner(null);
-        // setSize(0);
-        // setSteps(0);
     }
 
 
@@ -143,7 +118,7 @@ export const PlayBoard = ({ }) => {
                 )) : null}
 
             </div>
-            <div className={styles.btn} onClick={() => { setPlayer(prev => ({ ...prev, symbol: null })), navigate(-1) }} >
+            <div className={styles.btn} onClick={() => { io.emit("quit"); restartGame(); navigate(-1) }} >
                 <Btn>
                     <p className={styles.text} >BACK</p>
                 </Btn>

@@ -17,7 +17,7 @@ export const ChoosePlayerPage = () => {
     const { socket } = useContext(PlayerContext);
 
     // עבור שניהם
-    socket.on('set-player', (symbol) => setPlayer(prev=>({ ...prev, symbol })), console.log('on set player',player))
+    socket.on('set-player', (player) => setPlayer(player), console.log('on set player',player))
     socket.on('navigate-to-play-board', () => navigate( '/playboard'))
 
 
@@ -27,7 +27,7 @@ export const ChoosePlayerPage = () => {
             setPlayer((prev) => ({ ...prev, symbol: symbol }));
         } else {
             setPlayer((prev) => ({ ...prev, symbol: symbol }));
-            socket.emit('choose-player', symbol, player.roomNum);
+            socket.emit('choose-symbol', symbol,);
         }
     };
     
